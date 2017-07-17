@@ -26,13 +26,13 @@ these two routes according to the access token.
 6. New todo or new complete is always on the top of the todo/complete list
 
 #### Transition
-Transition is included for:
 1. Show error message when login.
 2. Open/Close new todo window.
 3. Add/remove new item to todo list.
 4. Add/remove new item to complete list.
 
-#### Unit test (Owing to limited time, unit tests are only for todo features)
+#### Unit test
+(Owing to limited time, unit tests are only for todo features)
 1. Click add button to open new todo window
 2. Click cancel button to close new todo window
 3. Add a new todo to todoList from new todo window
