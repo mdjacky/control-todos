@@ -142,14 +142,14 @@ describe('Todo.vue', () => {
     comp._watcher.run()
     const childComp = comp.$refs.newToDoModal
     Vue.nextTick(() => {
-      const originalLength = comp.todoList.length
+      const originalLength = comp.$el.querySelectorAll('.uncompleted').length
       const testMsg = 'this is unit test'
       let firstTodo = comp.$el.querySelectorAll('.uncompleted')[0].textContent
       expect(firstTodo).not.to.contain(testMsg)
       childComp.$emit('AddNewToDo', {title: testMsg})
       Vue.nextTick(() => {
         firstTodo = comp.$el.querySelectorAll('.uncompleted')[0].textContent
-        expect(comp.todoList.length).to.equal(originalLength + 1)
+        expect(comp.$el.querySelectorAll('.uncompleted').length).to.equal(originalLength + 1)
         expect(firstTodo).to.contain(testMsg)
         done()
       })

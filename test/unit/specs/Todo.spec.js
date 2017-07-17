@@ -69,8 +69,8 @@ describe('Todo.vue', () => {
     comp.userId = 1
     Vue.nextTick(() => {
       Vue.nextTick(() => {
-        const todoLengthBefore = comp.todoList.length
-        const completeLengthBefore = comp.completeList.length
+        const todoLengthBefore = comp.$el.querySelectorAll('.uncompleted').length
+        const completeLengthBefore = comp.$el.querySelectorAll('.completedList').length
         const title = comp.todoList[0].title
         expect(comp.$el.querySelector('#todoTaskLabel-0').textContent).to.contain(title)
         expect(comp.$el.querySelector('#completedTaskLabel-0').textContent).not.to.contain(title)
@@ -81,8 +81,8 @@ describe('Todo.vue', () => {
         Vue.nextTick(() => {
           // Wait for transition to finish
           setTimeout(() => {
-            expect(comp.todoList.length).to.equal(todoLengthBefore - 1)
-            expect(comp.completeList.length).to.equal(completeLengthBefore + 1)
+            expect(comp.$el.querySelectorAll('.uncompleted').length).to.equal(todoLengthBefore - 1)
+            expect(comp.$el.querySelectorAll('.completedList').length).to.equal(completeLengthBefore + 1)
             expect(comp.$el.querySelector('#todoTaskLabel-0').textContent).not.to.contain(title)
             expect(comp.$el.querySelector('#completedTaskLabel-0').textContent).to.contain(title)
             done()
@@ -98,8 +98,8 @@ describe('Todo.vue', () => {
     comp.userId = 1
     Vue.nextTick(() => {
       Vue.nextTick(() => {
-        const todoLengthBefore = comp.todoList.length
-        const completeLengthBefore = comp.completeList.length
+        const todoLengthBefore = comp.$el.querySelectorAll('.uncompleted').length
+        const completeLengthBefore = comp.$el.querySelectorAll('.completedList').length
         const title = comp.completeList[0].title
         expect(comp.$el.querySelector('#completedTaskLabel-0').textContent).to.contain(title)
         expect(comp.$el.querySelector('#todoTaskLabel-0').textContent).not.to.contain(title)
@@ -110,8 +110,8 @@ describe('Todo.vue', () => {
         Vue.nextTick(() => {
           // Wait for transition to finish
           setTimeout(() => {
-            expect(comp.completeList.length).to.equal(completeLengthBefore - 1)
-            expect(comp.todoList.length).to.equal(todoLengthBefore + 1)
+            expect(comp.$el.querySelectorAll('.completedList').length).to.equal(completeLengthBefore - 1)
+            expect(comp.$el.querySelectorAll('.uncompleted').length).to.equal(todoLengthBefore + 1)
             expect(comp.$el.querySelector('#completedTaskLabel-0').textContent).not.to.contain(title)
             expect(comp.$el.querySelector('#todoTaskLabel-0').textContent).to.contain(title)
             done()

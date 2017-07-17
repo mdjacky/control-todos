@@ -20,7 +20,7 @@
       <div class="list-container col-md-6">
           <h3>Completed</h3>
           <transition-group class="checkbox-group" name="transform-todoList" tag="p">
-            <li class="transform-todoList-item checkbox" v-for="(complete, index) in completeList" v-bind:key=complete.id>
+            <li class="transform-todoList-item checkbox completedList" v-for="(complete, index) in completeList" v-bind:key=complete.id>
               <label v-bind:id="'completedTaskLabel-'+index">
                 <input type="checkbox" v-bind:id="'completedTaskInput-'+index" v-model="complete.completed" @click.prevent="moveToDo(index)"> {{complete.title}}
               </label>
