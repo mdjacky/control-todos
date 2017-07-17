@@ -4,11 +4,11 @@
       <h5>To-Do..</h5>
       <form v-on:submit.prevent="newTodoSubmit()">
         <div class="form-group">
-          <input class="form-control" placeholder="What needs to be done?" type="text" v-model="todo.title">
+          <input class="form-control" placeholder="What needs to be done?" id="newToDo-input" type="text" v-model="todo.title">
         </div>
         <div class="form-group button-group">
-          <button class="btn btn-default" type="reset" v-on:click="cancelNewTodo()">Cancel</button>
-          <button class="btn btn-primary" type="submit">Create</button>
+          <button class="btn btn-default" id="btn-cancelNewToDo-inside" type="reset" v-on:click="cancelNewTodo()">Cancel</button>
+          <button class="btn btn-primary" id="btn-createNewToDo" type="submit">Create</button>
         </div>
       </form>
     </div>

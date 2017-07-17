@@ -1,9 +1,9 @@
 <template>
   <div class="TodoContainer">
     <div class="addNewToDoContainer">
-      <button class="btn btn-default todo-btn" v-if="displayNewTodo" v-on:click="closeNewTodo">Cancel</button>
-      <new-todo-modal v-if="displayNewTodo" @CancelNewToDo="closeNewTodo" @AddNewToDo="addToDo($event.title)"></new-todo-modal>
-      <button class="btn btn-default todo-btn" v-else v-on:click="openNewTodo">Add To-do</button>
+      <button class="btn btn-default todo-btn" id="btn-closeNewToDo" v-if="displayNewTodo" v-on:click="closeNewTodo">Cancel</button>
+      <new-todo-modal v-if="displayNewTodo" ref="newToDoModal" @CancelNewToDo="closeNewTodo" @AddNewToDo="addToDo($event.title)"></new-todo-modal>
+      <button class="btn btn-default todo-btn" id="btn-openNewToDo" v-else v-on:click="openNewTodo">Add To-do</button>
     </div>
     <hr>
     <div class="ToDoList">
@@ -11,8 +11,8 @@
           <h3>To-Dos</h3>
           <transition-group class="checkbox-group" name="transform-todoList" tag="p">
             <li class="transform-todoList-item uncompleted checkbox" v-for="(todo, index) in todoList" v-bind:key=todo.id>
-              <label>
-                <input type="checkbox" v-model="todo.completed" @click.prevent="completeToDo(index)"> {{todo.title}}
+              <label v-bind:id="'todoTaskLabel-'+index">
+                <input type="checkbox" v-bind:id="'todoTaskInput-'+index" v-model="todo.completed" @click.prevent="completeToDo(index)"> {{todo.title}}
               </label>
             </li>
           </transition-group>
@@ -21,8 +21,8 @@
           <h3>Completed</h3>
           <transition-group class="checkbox-group" name="transform-todoList" tag="p">
             <li class="transform-todoList-item checkbox" v-for="(complete, index) in completeList" v-bind:key=complete.id>
-              <label>
-                <input type="checkbox" v-model="complete.completed" @click.prevent="moveToDo(index)"> {{complete.title}}
+              <label v-bind:id="'completedTaskLabel-'+index">
+                <input type="checkbox" v-bind:id="'completedTaskInput-'+index" v-model="complete.completed" @click.prevent="moveToDo(index)"> {{complete.title}}
               </label>
             </li>
           </transition-group>
@@ -86,18 +86,14 @@ export default {
       })
     },
     completeToDo (index) {
-      setTimeout(() => {
-        this.todoList[index].completed = true
-        this.completeList.unshift(this.todoList[index])
-        this.todoList.splice(index, 1)
-      }, 100)
+      this.todoList[index].completed = true
+      this.completeList.unshift(this.todoList[index])
+      this.todoList.splice(index, 1)
     },
     moveToDo (index) {
-      setTimeout(() => {
-        this.completeList[index].completed = false
-        this.todoList.unshift(this.completeList[index])
-        this.completeList.splice(index, 1)
-      }, 100)
+      this.completeList[index].completed = false
+      this.todoList.unshift(this.completeList[index])
+      this.completeList.splice(index, 1)
     }
   }
 }
