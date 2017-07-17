@@ -1,4 +1,5 @@
 const cleanLocalStorage = function () {
+  // Remove all information in localStorage
   localStorage.removeItem('accessToken')
   localStorage.removeItem('userId')
   localStorage.removeItem('userName')
@@ -24,6 +25,8 @@ export default {
         let userList = response.body
         for (let user of userList) {
           if (username === user.username) {
+            // Set basic information in localStorage
+            // For similicity, accessToken is timestamp
             localStorage.setItem('accessToken', Date.now())
             localStorage.setItem('userId', user.id)
             localStorage.setItem('userName', user.name)
