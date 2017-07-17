@@ -1,10 +1,9 @@
 # control-todo-list
 
-> A Vue.js project
-Introduction:
+> A Vue.js project for todo list
 
-Features:
--- Login
+## Features:
+#### Login
 1. User can login with only username in https://jsonplaceholder.typicode.com/users.
 2. Error message will show up if user name is wrong.
 3. If user login, an access token will be saved in localStorage. In 30 minutes, user can access
@@ -15,19 +14,32 @@ deleting token.
 5. Only two routes are valid ['/', '/dashboard']. Invalid routes will be automatically brought to
 these two routes according to the access token.
 
--- ToDo
-Features are satisfied as required.
+#### Logout
+1. After login, click the button in the right corner of the nav bar to logout.
 
--- Transition
+#### ToDo (Features are satisfied as required)
+1. Click add button to open new todo window
+2. Click cancel button to close new todo window
+3. Add a new todo to todoList from new todo window
+4. Click one item in todo list to complete a todo task
+5. Click one item in complete list to set a complete task as todo
+6. New todo or new complete is always on the top of the todo/complete list
+
+#### Transition
 Transition is included for:
 1. Show error message when login.
-2. Open new todo window.
+2. Open/Close new todo window.
 3. Add/remove new item to todo list.
 4. Add/remove new item to complete list.
 
--- Unit test
-Owing to limited time, unit tests are only for todo features.
-Please run 'npm run unit' to check all the unit test
+#### Unit test (Owing to limited time, unit tests are only for todo features)
+1. Click add button to open new todo window
+2. Click cancel button to close new todo window
+3. Add a new todo to todoList from new todo window
+4. Empty message cannot be added to todoList
+5. Click one item in todo list to complete a todo task
+6. Click one item in complete list to set a complete task as todo
+
 
 ## Build Setup
 
